@@ -1,0 +1,11 @@
+#cloud-config
+users:
+  - name: {username}
+    ssh_authorized_keys:
+      - {sshkey}
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
+bootcmd:
+  - rm -f /run/network/interface.d/enp1s0
+  - ifup enp1s0
